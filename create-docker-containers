@@ -16,7 +16,8 @@ docker create --privileged \
 	-e "OPENVPN_USERNAME=$VPN_USERNAME" \
 	-e "OPENVPN_PASSWORD=$VPN_PASSWORD" \
 	-e "OPENVPN_OPTS=--inactive 3600 --ping 10 --ping-exit 60" \
-	-p 9091:9091 \
+	-e "LOCAL_NETWORK=192.168.1.0/24" \
+        -p 9091:9091 \
 	haugene/transmission-openvpn;
 
 docker create \

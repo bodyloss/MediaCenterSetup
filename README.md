@@ -3,12 +3,14 @@
 Steps:
 1. Install docker https://docs.docker.com/engine/installation/#platform-support-matrix
 1. Run `git clone https://github.com/bodyloss/MediaCenterSetup`
-1. Edit `create-docker-containers` and set the mount point and vpn username/password. See https://github.com/haugene/docker-transmission-openvpn for how to setup the VPN container.
+1. Edit `create-docker-containers`
+    1. set the mount point and vpn username/password. See https://github.com/haugene/docker-transmission-openvpn for how to setup the VPN container.
+    1. set your internal network ip range for access to transmission
 1. Run `./MediaCenterSetup/create-docker-containers`
 1. Run `./MediaCenterSetup/start-docker`
 1. Open Jackett http://YOUR_IP:9117/Admin/Dashboard and add a tracker to use, click "Copy torznab feed" and save this for the next step.
 1. Open Sonarr http://YOUR_IP:8989/
-    1. Add a downloadclient of type transmission. The transmission docker container doesn't have a public URL as all traffic goes through VPN. You can use the internal docker network though. To get the IP address run `docker inspect transmission | grep \"IPAddress\"`, port is 9091
+    1. Add a downloadclient of type transmission. Set the ip and the port is 9091
     1. Add a torznab custom indexer, paste in the torznab feed from the previous step. Also set the API key to the one displayed at the top of Jackett
     1. Click connect and add `Plex Media Server`. The url is your public IP address, and the username and password are those you sign into https://plex.tv with
     1. Click _Series_, _Add series_ and find one you want. Click _Add a path_ and set it to `/tv/`
