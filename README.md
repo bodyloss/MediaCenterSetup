@@ -5,7 +5,8 @@ Steps:
 1. Install docker-compose https://docs.docker.com/compose/install/
 1. Run `git clone https://github.com/bodyloss/MediaCenterSetup`
 1. `cd ./MediaCenterSetup`
-1. Run `TIME_ZONE= "Europe/London" MOUNT_POINT="/mnt/volume-fra1-01" VPN_PROVIDER="NORDVPN" VPN_CONFIG="UK" VPN_USERNAME="username" VPN_PASSWORD="password" docker-compose up -d`
+1. Make your own `.env` file `cp .env.sample .env`
+1. Edit the `.env` file where necessary
 1. Open Jackett http://YOUR_IP:9117/Admin/Dashboard and add a tracker to use, click "Copy torznab feed" and save this for the next step.
 1. Open Sonarr http://YOUR_IP:8989/
     1. Add a downloadclient of type transmission. The transmission docker container doesn't have a public URL as all traffic goes through VPN. You can use the internal docker network though. To get the IP address run `docker inspect transmission | grep \"IPAddress\"`, port is 9091
